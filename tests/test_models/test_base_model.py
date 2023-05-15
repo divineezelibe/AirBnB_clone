@@ -50,7 +50,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
     def test_instantiation_with_no_kwargs(self):
         with self.assertRaises(TypeError):
             BaseModel(id=None, created_at=None, updated_at=None)
-            
+
 class TestBaseModel_to_dict(unittest.TestCase):
     """Functions we wrote to test to_dict method of the BaseModel class."""
 

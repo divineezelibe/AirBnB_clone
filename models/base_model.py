@@ -19,7 +19,6 @@ class BaseModel:
                     value = datetime.datetime.fromisoformat(value)
                     setattr(self, key, value)
                 else:
-# <<<<<<< hbnb
                     setattr(self, key, value)
 # =======
 #                     if key == "created_at" or key == "updated_at":
