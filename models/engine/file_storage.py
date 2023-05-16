@@ -19,10 +19,17 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
+        """
+        this function adds the new objects to __objects dictionary which
+        adds files to be stored in json
+        """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
 
     def save(self):
+        """
+        stores our json object into file.json
+        """
         data = {}
         for key, value in self.__objects.items():
             data[key] = value.to_dict()
@@ -30,6 +37,7 @@ class FileStorage:
             json.dump(data, file)
 
     def reload(self):
+        """convert json object back to our class object"""
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, mode="r", encoding="utf-8")\
                  as file:
