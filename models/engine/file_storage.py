@@ -60,7 +60,7 @@ class FileStorage:
                     if class_name == "Review":
                         model = "review"
                     module = \
-                        __import__(f"models.{model}", fromlist=[class_name])
+                        __import__("models.{}".format(model), fromlist=[class_name])
                     cls = getattr(module, class_name)
                     obj = cls(**obj_dict)
                     self.__objects[key] = obj

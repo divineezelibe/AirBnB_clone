@@ -17,10 +17,26 @@ class BaseModel:
                 if key == "__class__":
                     continue
                 if key == "created_at" or key == "updated_at":
-                    value = datetime.datetime.fromisoformat(value)
-                    setattr(self, key, value)
+                    # Parse the string into a datetime object
+                    datetime_obj = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    # value = datetime.datetime.isoformat(datetime_obj)
+                    # value = datetime.datetime.isoformat(value)
+                    setattr(self, key, datetime_obj)
                 else:
                     setattr(self, key, value)
+# <<<<<<< hbnb
+# =======
+# # =======
+#                     if key == "created_at" or key == "updated_at":
+#                         # Parse the string into a datetime object
+#                         datetime_obj = datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+#                         value = datetime.datetime.isoformat(datetime_obj)
+#                         #Trying to make value a datetime object
+#                         setattr(self, key, datetime_obj)
+#                     else:
+#                         setattr(self, key, value)
+# # >>>>>>> main
+# >>>>>>> main
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
